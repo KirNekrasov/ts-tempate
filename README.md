@@ -37,7 +37,7 @@ yarn add -D @types/eslint @types/jest @types/node @typescript-eslint/eslint-plug
 
 - Copy and modify if required config files:
 
-  - Typescript: `tsconfig.json`
+  - Typescript: `tsconfig.json`, `tsconfig.cjs.json`, `tsconfig.esm.json`
   - ESLint: `.eslintrc.js`
   - Prettier: `.prettierignore`, `.prettierrc`
   - Jest: `jest.config.js`
@@ -72,6 +72,21 @@ yarn dlx @yarnpkg/sdks vscode
 
 ```
 yarn prepare
+```
+
+- Copy to `package.json` entry points and set up version:
+
+```json
+"version": "1.0.0",
+"main": "./dist/cjs/index.js",
+"module": "./dist/esm/index.js",
+"types": "./dist/esm/index.d.ts",
+```
+
+- Try to build your project:
+
+```
+yarn build
 ```
 
 - You're welcome.

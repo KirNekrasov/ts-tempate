@@ -1,5 +1,9 @@
 {
   "name": "ts-tempate",
+  "version": "1.0.0",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "packageManager": "yarn@4.1.0",
   "devDependencies": {
     "@types/eslint": "^8.56.2",
@@ -12,6 +16,7 @@
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "scripts": {
@@ -20,7 +25,9 @@
     "format:fix": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "build": "tsc",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm run build:esm && npm run build:cjs",
     "prepare": "yarn format & yarn lint & yarn test"
   }
 }
